@@ -123,27 +123,27 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
             //    yield return new ValidationResult("Tanggal tidak boleh lebih dari hari ini", new List<string> { "Date" });
             //}
 
-            if (string.IsNullOrWhiteSpace(PaymentTerm))
-            {
-                yield return new ValidationResult("Payment Term tidak boleh kosong", new List<string> { "PaymentTerm" });
-            }
-            else if (PaymentTerm.ToUpper() == "LC")
-            {
-                if (string.IsNullOrEmpty(LCNo))
-                {
-                    yield return new ValidationResult("LC No tidak boleh kosong", new List<string> { "LCNo" });
-                }
+            //if (string.IsNullOrWhiteSpace(PaymentTerm))
+            //{
+            //    yield return new ValidationResult("Payment Term tidak boleh kosong", new List<string> { "PaymentTerm" });
+            //}
+            //else if (PaymentTerm.ToUpper() == "LC")
+            //{
+            //    if (string.IsNullOrEmpty(LCNo))
+            //    {
+            //        yield return new ValidationResult("LC No tidak boleh kosong", new List<string> { "LCNo" });
+            //    }
 
-                if (LCDate == null || LCDate == DateTimeOffset.MinValue)
-                {
-                    yield return new ValidationResult("Tgl. LC harus diisi", new List<string> { "LCDate" });
-                }
+            //    if (LCDate == null || LCDate == DateTimeOffset.MinValue)
+            //    {
+            //        yield return new ValidationResult("Tgl. LC harus diisi", new List<string> { "LCDate" });
+            //    }
 
-                if (string.IsNullOrEmpty(IssuedBy))
-                {
-                    yield return new ValidationResult("Issued By tidak boleh kosong", new List<string> { "IssuedBy" });
-                }
-            }
+            //    if (string.IsNullOrEmpty(IssuedBy))
+            //    {
+            //        yield return new ValidationResult("Issued By tidak boleh kosong", new List<string> { "IssuedBy" });
+            //    }
+            //}
 
             if (BuyerAgent == null || BuyerAgent.Id == 0)
             {
@@ -160,15 +160,15 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
                 yield return new ValidationResult("Destination tidak boleh kosong", new List<string> { "Destination" });
             }
 
-            if (TruckingDate == null || TruckingDate == DateTimeOffset.MinValue)
-            {
-                yield return new ValidationResult("Tanggal Trucking tidak boleh kosong", new List<string> { "TruckingDate" });
-            }
+            //if (TruckingDate == null || TruckingDate == DateTimeOffset.MinValue)
+            //{
+            //    yield return new ValidationResult("Tanggal Trucking tidak boleh kosong", new List<string> { "TruckingDate" });
+            //}
 
-            if (ExportEstimationDate == null || ExportEstimationDate == DateTimeOffset.MinValue)
-            {
-                yield return new ValidationResult("Tanggal Perkiraan Pengiriman tidak boleh kosong", new List<string> { "ExportEstimationDate" });
-            }
+            //if (ExportEstimationDate == null || ExportEstimationDate == DateTimeOffset.MinValue)
+            //{
+            //    yield return new ValidationResult("Tanggal Perkiraan Pengiriman tidak boleh kosong", new List<string> { "ExportEstimationDate" });
+            //}
 
             if (Items == null || Items.Count < 1)
             {
@@ -195,11 +195,11 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
                         errorItemsCount++;
                     }
 
-                    if (string.IsNullOrWhiteSpace(item.Description))
-                    {
-                        errorItem["Description"] = "Description tidak boleh kosong";
-                        errorItemsCount++;
-                    }
+                    //if (string.IsNullOrWhiteSpace(item.Description))
+                    //{
+                    //    errorItem["Description"] = "Description tidak boleh kosong";
+                    //    errorItemsCount++;
+                    //}
 
                     if (item.Details == null || item.Details.Count < 1)
                     {
@@ -321,10 +321,10 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
                     yield return new ValidationResult("Unit SAY tidak boleh kosong", new List<string> { "SayUnit" });
                 }
 
-                if (string.IsNullOrEmpty(OtherCommodity))
-                {
-                    yield return new ValidationResult("Other Commodity tidak boleh kosong", new List<string> { "OtherCommodity" });
-                }
+                //if (string.IsNullOrEmpty(OtherCommodity))
+                //{
+                //    yield return new ValidationResult("Other Commodity tidak boleh kosong", new List<string> { "OtherCommodity" });
+                //}
             }
 
             #endregion
