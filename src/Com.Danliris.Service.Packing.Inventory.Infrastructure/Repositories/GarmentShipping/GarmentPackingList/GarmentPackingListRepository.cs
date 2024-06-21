@@ -161,6 +161,11 @@ namespace Com.Danliris.Service.Packing.Inventory.Infrastructure.Repositories.Gar
             modelToUpdate.SetIsSampleDelivered(model.IsSampleDelivered, _identityProvider.Username, UserAgent);
             modelToUpdate.SetIsSampleExpenditureGood(model.IsSampleExpenditureGood, _identityProvider.Username, UserAgent);
 
+            if(modelToUpdate.Status == GarmentPackingListStatusEnum.REJECTED_MD || modelToUpdate.Status == GarmentPackingListStatusEnum.REJECTED_SHIPPING_UNIT)
+            {
+                modelToUpdate.SetStatus(GarmentPackingListStatusEnum.POSTED,_identityProvider.Username, UserAgent);
+            }
+
             foreach (var itemToUpdate in modelToUpdate.Items)
             {
                 var item = model.Items.FirstOrDefault(i => i.Id == itemToUpdate.Id);
