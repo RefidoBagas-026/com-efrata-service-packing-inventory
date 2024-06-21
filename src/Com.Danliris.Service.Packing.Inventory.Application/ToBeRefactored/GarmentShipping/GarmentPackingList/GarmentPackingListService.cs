@@ -343,7 +343,7 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
 
         public virtual async Task<string> Create(GarmentPackingListViewModel viewModel)
         {
-            viewModel.Status = GarmentPackingListStatusEnum.CREATED.ToString();
+            viewModel.Status = GarmentPackingListStatusEnum.POSTED.ToString();
 
             GarmentPackingListModel garmentPackingListModel = MapToModel(viewModel);
             foreach (var item in garmentPackingListModel.Items)
