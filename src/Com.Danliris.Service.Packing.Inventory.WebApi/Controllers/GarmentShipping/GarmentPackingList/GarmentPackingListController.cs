@@ -42,6 +42,14 @@ namespace Com.Danliris.Service.Packing.Inventory.WebApi.Controllers.GarmentShipp
             try
             {
                 VerifyUser();
+                if (!ModelState.IsValid)
+                {
+                    var exception = new
+                    {
+                        error = ResultFormatter.FormatErrorMessage(ModelState)
+                    };
+                    return new BadRequestObjectResult(exception);
+                }
                 _validateService.Validate(viewModel);
                 var result = await _service.Create(viewModel);
 
