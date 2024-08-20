@@ -285,47 +285,47 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
             #endregion
 
             #region Measurement
+            //Commant To Hide Measurement Validation 20 Agustus 2024
+            //if(InvoiceType != "DS-Commercial" && InvoiceType != "SM-Non-Commercial")
+            //{
+            //    if (Measurements == null || Measurements.Count < 1)
+            //    {
+            //        yield return new ValidationResult("Measurements tidak boleh kosong", new List<string> { "MeasurementsCount" });
+            //    }
+            //    else
+            //    {
+            //        int errorMeasurementsCount = 0;
+            //        List<Dictionary<string, object>> errorMeasurements = new List<Dictionary<string, object>>();
 
-            if(InvoiceType != "DS-Commercial" && InvoiceType != "SM-Non-Commercial")
-            {
-                if (Measurements == null || Measurements.Count < 1)
-                {
-                    yield return new ValidationResult("Measurements tidak boleh kosong", new List<string> { "MeasurementsCount" });
-                }
-                else
-                {
-                    int errorMeasurementsCount = 0;
-                    List<Dictionary<string, object>> errorMeasurements = new List<Dictionary<string, object>>();
+            //        foreach (var measurement in Measurements)
+            //        {
+            //            Dictionary<string, object> errorMeasurement = new Dictionary<string, object>();
 
-                    foreach (var measurement in Measurements)
-                    {
-                        Dictionary<string, object> errorMeasurement = new Dictionary<string, object>();
+            //            //if (measurement.Length <= 0)
+            //            //{
+            //            //    errorMeasurement["Length"] = "Length harus lebih dari 0";
+            //            //    errorMeasurementsCount++;
+            //            //}
 
-                        //if (measurement.Length <= 0)
-                        //{
-                        //    errorMeasurement["Length"] = "Length harus lebih dari 0";
-                        //    errorMeasurementsCount++;
-                        //}
+            //            errorMeasurements.Add(errorMeasurement);
+            //        }
 
-                        errorMeasurements.Add(errorMeasurement);
-                    }
+            //        if (errorMeasurementsCount > 0)
+            //        {
+            //            yield return new ValidationResult(JsonConvert.SerializeObject(errorMeasurements), new List<string> { "Measurements" });
+            //        }
+            //    }
 
-                    if (errorMeasurementsCount > 0)
-                    {
-                        yield return new ValidationResult(JsonConvert.SerializeObject(errorMeasurements), new List<string> { "Measurements" });
-                    }
-                }
+            //    if (string.IsNullOrEmpty(SayUnit))
+            //    {
+            //        yield return new ValidationResult("Unit SAY tidak boleh kosong", new List<string> { "SayUnit" });
+            //    }
 
-                if (string.IsNullOrEmpty(SayUnit))
-                {
-                    yield return new ValidationResult("Unit SAY tidak boleh kosong", new List<string> { "SayUnit" });
-                }
-
-                //if (string.IsNullOrEmpty(OtherCommodity))
-                //{
-                //    yield return new ValidationResult("Other Commodity tidak boleh kosong", new List<string> { "OtherCommodity" });
-                //}
-            }
+            //    //if (string.IsNullOrEmpty(OtherCommodity))
+            //    //{
+            //    //    yield return new ValidationResult("Other Commodity tidak boleh kosong", new List<string> { "OtherCommodity" });
+            //    //}
+            //}
 
             #endregion
 
