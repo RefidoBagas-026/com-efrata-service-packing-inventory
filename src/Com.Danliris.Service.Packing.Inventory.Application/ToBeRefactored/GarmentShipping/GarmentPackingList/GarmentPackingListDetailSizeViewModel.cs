@@ -7,5 +7,6 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
     {
         public SizeViewModel Size { get; set; }
         public double Quantity { get; set; }
+        public string Remark { get; set; }
     }
 }
