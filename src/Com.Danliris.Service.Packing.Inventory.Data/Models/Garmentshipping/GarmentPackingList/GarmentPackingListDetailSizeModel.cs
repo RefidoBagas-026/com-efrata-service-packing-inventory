@@ -9,17 +9,18 @@ namespace Com.Danliris.Service.Packing.Inventory.Data.Models.Garmentshipping.Gar
         public string Size { get; private set; }
         public int SizeIdx { get; private set; }
         public double Quantity { get; private set; }
-
+        public string Remark { get; private set; }
         public GarmentPackingListDetailSizeModel()
         {
         }
 
-        public GarmentPackingListDetailSizeModel(int sizeId, string size, int sizeIdx, double quantity)
+        public GarmentPackingListDetailSizeModel(int sizeId, string size, int sizeIdx, double quantity, string remark)
         {
             SizeId = sizeId;
             Size = size;
             SizeIdx = sizeIdx;
             Quantity = quantity;
+            Remark = remark;
         }
 
         public void SetSizeId(int newValue, string userName, string userAgent)
@@ -54,6 +55,15 @@ namespace Com.Danliris.Service.Packing.Inventory.Data.Models.Garmentshipping.Gar
             if (Quantity != newValue)
             {
                 Quantity = newValue;
+                this.FlagForUpdate(userName, userAgent);
+            }
+        }
+
+        public void SetRemark(string newValue, string userName, string userAgent)
+        {
+            if (Remark != newValue)
+            {
+                Remark = newValue;
                 this.FlagForUpdate(userName, userAgent);
             }
         }
