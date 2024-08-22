@@ -399,26 +399,43 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
             //    "InvoiceNo", "InvoiceType", "PackingListType", "SectionCode", "Destination", "BuyerAgentName"
             //};
             //query = QueryHelper<GarmentPackingListModel>.Search(query, SearchAttributes, keyword);
-            if (keyword != null)
-            {
-                query = query.Where(q => q.Items.Any(i => i.RONo.Contains(keyword)) ||
-                    q.InvoiceNo.Contains(keyword) ||
-                    q.InvoiceType.Contains(keyword) ||
-                    q.PackingListType.Contains(keyword) ||
-                    q.SectionCode.Contains(keyword) ||
-                    q.Destination.Contains(keyword) ||
-                    q.BuyerAgentName.Contains(keyword));
-            }
+            //if (keyword != null)
+            //{
+            //    query = query.Where(q => q.Items.Any(i => i.RONo.Contains(keyword)) ||
+            //        q.InvoiceNo.Contains(keyword) ||
+            //        q.InvoiceType.Contains(keyword) ||
+            //        q.PackingListType.Contains(keyword) ||
+            //        q.SectionCode.Contains(keyword) ||
+            //        q.Destination.Contains(keyword) ||
+            //        q.BuyerAgentName.Contains(keyword)) 
+            //        //q.Status.ToString().Contains(keyword))
+            //      ;
+            //}
 
             Dictionary<string, string> OrderDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(order);
             query = QueryHelper<GarmentPackingListModel>.Order(query, OrderDictionary);
 
-            var data = query
+            var result = query.Select(m => MapToViewModel(m)).ToList();
+
+            if(keyword != null)
+            {
+                result = result.Where(q => q.Items.Any(i => i.RONo.Contains(keyword)) ||
+                    q.InvoiceNo.Contains(keyword) ||
+                    q.InvoiceType.Contains(keyword) ||
+                    q.PackingListType.Contains(keyword) ||
+                    //q.Section.Code.Contains(keyword) ||
+                    q.Destination.Contains(keyword) ||
+                    q.BuyerAgent.Name.Contains(keyword) ||
+                    q.Status.Contains(keyword)).ToList()
+                  ;
+            }
+
+            var data = result
                 .Skip((page - 1) * size)
-                .Take(size)
-                .ToList()
-                .Select(model => MapToViewModel(model))
-                .ToList();
+                .Take(size).ToList();
+                
+                //.Select(model => MapToViewModel(model))
+                //.ToList();
 
             return new ListResult<GarmentPackingListViewModel>(data, page, size, query.Count());
         }
