@@ -520,11 +520,11 @@ namespace Com.Danliris.Service.Packing.Inventory.WebApi
 
             app.UseCors(PACKING_INVENTORY_POLICY);
 
-            app.UseSwagger();
-            app.UseSwaggerUI(swagger =>
-            {
-                swagger.SwaggerEndpoint("/swagger/v1/swagger.json", "Packing Inventory API");
-            });
+            //app.UseSwagger();
+            //app.UseSwaggerUI(swagger =>
+            //{
+            //    swagger.SwaggerEndpoint("/swagger/v1/swagger.json", "Packing Inventory API");
+            //});
 
             //var bus = app.ApplicationServices.GetService<IAzureServiceBusConsumer<ProductSKUInventoryMovementModel>>();
             //bus.RegisterOnMessageHandlerAndReceiveMessages();
